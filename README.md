@@ -38,19 +38,19 @@ Este repositorio acompaña al curso de **Programación Web** del Tecnológico Su
 
 ## Temario
 
-1. **Introducción a las aplicaciones web**
+1. **[Introducción a las aplicaciones web](/Unidad_1/README.md)**
    - Evolución y arquitectura
    - Tecnologías y planificación
-2. **HTML, XML y CSS**
+2. **[HTML, XML y CSS](/Unidad_2/README.md)**
    - Documentos web estructurados
    - Formularios y estilos avanzados
-3. **Programación del lado del cliente**
+3. **[Programación del lado del cliente](/Unidad_3/README.md)**
    - JavaScript y frameworks
    - Manipulación del DOM y eventos
-4. **Programación del lado del servidor**
+4. **[Programación del lado del servidor](/Unidad_4/README.md)**
    - PHP, Java, Node.js, u otro
    - Acceso a datos y clases
-5. **Cómputo en la nube y servicios**
+5. **[Cómputo en la nube y servicios](/Unidad_5/README.md)**
    - Tipos de servicios, patrones y seguridad
    - Consumo y publicación de APIs
 
