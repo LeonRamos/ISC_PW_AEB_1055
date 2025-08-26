@@ -51,26 +51,16 @@
       <li>Servir en la taza</li>
     </ol>
 
-    <!-- Tabla de ejemplo -->
-    <h2>Horario de actividades:</h2>
-    <table border="1">
-      <tr>
-        <th>Hora</th>
-        <th>Actividad</th>
-      </tr>
-      <tr>
-        <td>08:00</td>
-        <td>Desayuno</td>
-      </tr>
-      <tr>
-        <td>09:00</td>
-        <td>Revisión de correos electrónicos</td>
-      </tr>
-      <tr>
-        <td>10:30</td>
-        <td>Reunión de equipo</td>
-      </tr>
-    </table>
+   <h1>Contacto</h1>
+    <form action="/enviar-formulario" method="POST">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required><br><br>
+
+      <label for="correo">Correo electrónico:</label>
+      <input type="email" id="correo" name="correo" required><br><br>
+
+      <input type="submit" value="Enviar">
+    </form>
 
 </body>
 </html>
