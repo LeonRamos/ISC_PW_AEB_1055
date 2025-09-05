@@ -1,0 +1,219 @@
+/* -- Variables y configuración general -- */
+:root {
+  --clr-bg-gradient: linear-gradient(120deg, #f8fafc 0%, #e7e6fa 30%, #ffe6ce 100%);
+  --clr-card-bg: #fff;
+  --clr-accent: #ff9332;
+  --clr-accent-light: #ffe6ce;
+  --clr-text-title: #22223b;
+  --clr-text-main: #38384f;
+  --clr-text-muted: #757074;
+  --clr-secondary: #a4acc4;
+  --clr-border: #e4e2ee;
+  --clr-tag-bg: #ffe6ce;
+}
+
+/* -- Reset y fuentes -- */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  background: var(--clr-bg-gradient);
+}
+
+body {
+  min-height: 100vh;
+}
+
+/* -- Layout principal -- */
+header, main, footer {
+  max-width: 900px;
+  margin: auto;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding: 32px 32px 0 32px;
+  gap: 32px;
+}
+
+header img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--clr-accent-light);
+}
+
+header h1 {
+  font-size: 2.6rem;
+  color: var(--clr-text-title);
+  margin: 0 0 4px 0;
+  font-weight: 700;
+}
+
+header h2 {
+  padding: 4px 18px;
+  color: var(--clr-accent);
+  border: 2px solid var(--clr-accent);
+  display: inline-block;
+  border-radius: 18px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  background-color: #fff;
+  margin: 0 0 8px 0;
+}
+
+address {
+  margin: 0;
+  font-style: normal;
+  color: var(--clr-text-muted);
+}
+
+address a {
+  color: var(--clr-accent);
+  text-decoration: none;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 16px;
+  padding: 0 32px;
+}
+
+main > section, main > aside {
+  background: var(--clr-card-bg);
+  border-radius: 20px;
+  box-shadow: 0 6px 36px 0 #eae0ff33;
+  padding: 32px 24px;
+  flex: 1 1 380px;
+  min-width: 360px;
+}
+
+section#perfil h2,
+section#habilidades h2,
+section#experiencia h2,
+section#educacion h2,
+section#certificaciones h2,
+section#proyectos h2 {
+  color: var(--clr-accent);
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
+#habilidades ul, #proyectos ul, #certificaciones ul {
+  list-style: none;
+  padding: 0;
+}
+
+#habilidades li, #proyectos li, #certificaciones li {
+  display: inline-block;
+  background: var(--clr-tag-bg);
+  color: var(--clr-text-main);
+  margin: 5px 8px 5px 0;
+  padding: 6px 18px;
+  border-radius: 16px;
+  font-size: 1.02rem;
+}
+
+/* -- Experiencia Laboral y Educación -- */
+section#experiencia article, section#educacion table {
+  margin-bottom: 24px;
+}
+
+section#experiencia h3 {
+  color: var(--clr-text-title);
+  margin-top: 0;
+  margin-bottom: 6px;
+  font-size: 1.12rem;
+}
+
+section#experiencia h4 {
+  color: var(--clr-accent);
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+section#experiencia ul {
+  margin: 0 0 10px 15px;
+  color: var(--clr-text-muted);
+}
+
+/* -- Tabla de educación -- */
+section#educacion table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 4px;
+}
+
+section#educacion th,
+section#educacion td {
+  border-bottom: 1px solid var(--clr-border);
+  padding: 8px 4px;
+  text-align: left;
+  color: var(--clr-text-main);
+}
+
+section#educacion th {
+  color: var(--clr-accent);
+  font-weight: 700;
+}
+
+/* -- Footer -- */
+footer {
+  margin: 48px 0 0 0;
+  padding: 16px;
+  text-align: center;
+  color: var(--clr-secondary);
+  font-size: 1rem;
+  background: transparent;
+}
+
+/* -- Responsive -- */
+@media (max-width: 1100px) {
+  main {
+    flex-direction: column;
+  }
+}
+
+/* -- Espacio para componentes JS (skills, barras, idiomas, etc) -- */
+.progress-bar {
+  height: 8px;
+  background: var(--clr-accent-light);
+  border-radius: 8px;
+  margin: 2px 0 16px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-value {
+  height: 100%;
+  border-radius: 8px;
+  background: var(--clr-accent);
+  width: 60%; /* Se puede modificar por JS */
+  transition: width 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.language-charts {
+  display: flex;
+  gap: 18px;
+  margin: 8px 0;
+}
+
+.language-chart {
+  border-radius: 50%;
+  background: var(--clr-tag-bg);
+  color: var(--clr-accent);
+  font-size: 1.1rem;
+  width: 75px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-weight: 600;
+  box-shadow: 0 2px 6px #eeecef33;
+}
