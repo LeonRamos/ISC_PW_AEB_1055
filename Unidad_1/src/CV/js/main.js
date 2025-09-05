@@ -1,29 +1,25 @@
-// Animar las barras de habilidades
+// Animar barras de habilidades y porcentajes de idioma
 document.addEventListener('DOMContentLoaded', () => {
-  // Para progress-bar-value (skills)
+  // Progress bars
   document.querySelectorAll('.progress-bar-value').forEach(bar => {
     let target = bar.getAttribute('data-value') || "0";
-    bar.style.width = '0%'; // Inicialmente 0%
-    setTimeout(() => {
-      bar.style.width = target + '%';
-    }, 400);
+    bar.style.width = '0%';
+    setTimeout(() => { bar.style.width = target + '%'; }, 300);
   });
 
-  // Para los charts de idiomas (language)
+  // Language charts
   document.querySelectorAll('.language-chart').forEach(chart => {
     let value = parseInt(chart.getAttribute('data-percent')) || 0;
-    let label = chart.querySelector('.lang-label');
-    let current = 0;
-    let step = Math.ceil(value / 40); // control de velocidad
-
-    function animateLanguage() {
+    let percentEl = chart.querySelector('.lang-percent');
+    let current = 0, step = Math.ceil(value / 40);
+    function animate() {
       if (current < value) {
         current += step;
         if (current > value) current = value;
-        chart.querySelector('.lang-percent').textContent = current + '%';
-        requestAnimationFrame(animateLanguage);
+        percentEl.textContent = current + '%';
+        requestAnimationFrame(animate);
       }
     }
-    animateLanguage();
+    animate();
   });
 });
