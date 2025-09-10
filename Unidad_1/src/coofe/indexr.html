@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Especifica el formato de caracteres -->
+    <meta charset="UTF-8">
+    <!-- Hace el sitio web responsivo en móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título de la pestaña -->
+    <title>The Café | Sitio Responsivo</title>
+    <!-- Vincula el archivo de estilos externo -->
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <!-- Encabezado principal con el menú de navegación -->
+    <header>
+        <!-- Barra de navegación -->
+        <nav class="barra-navegacion">
+            <!-- Enlaces de navegación -->
+            <a href="#">HOME</a>
+            <a href="#">ABOUT</a>
+            <a href="#">MENU</a>
+            <a href="#">WHERE</a>
+        </nav>
+    </header>
+
+    <!-- Sección con la imagen y el nombre del café -->
+    <section class="seccion-principal">
+        <!-- Imagen de fondo y textos encima -->
+        <div class="contenedor-imagen">
+            <!-- Imagen ejemplo, usar una imagen real en producción -->
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Café artesano">
+            <!-- Texto principal centrado -->
+            <div class="texto-superpuesto">
+                <h1>the<br>Café</h1>
+                <!-- Dirección visible en la parte inferior derecha -->
+                <p class="direccion">15 Adr street, 5815</p>
+                <!-- Horario en la parte inferior izquierda -->
+                <span class="horario">Open from 6am to 5pm</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección informativa acerca del café -->
+    <section class="acerca">
+        <button class="boton-negro">ABOUT THE CAFE</button>
+        <p>
+            The Café fue fundado en blabla por Mr. Smith en lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+        </p>
+    </section>
+
+    <!-- Sección de formulario: Ejemplo para reservar una mesa -->
+    <section class="formulario">
+        <h2>Haz tu reservación</h2>
+        <form>
+            <!-- Campo de nombre -->
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <!-- Campo de email -->
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+            <!-- Campo de fecha -->
+            <label for="fecha">Fecha de reserva:</label>
+            <input type="date" id="fecha" name="fecha" required>
+            <!-- Campo de número de personas -->
+            <label for="personas">Número de personas:</label>
+            <input type="number" id="personas" name="personas" min="1" max="20" required>
+            <!-- Botón de envío -->
+            <button type="submit">Reservar</button>
+        </form>
+    </section>
+</body>
+</html>
