@@ -1,26 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Explorador de Los Simpsons API</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uso Básico de API con Fetch</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>🟡 Explorador de Los Simpsons API</h1>
+    <h1>Usuarios de Ejemplo (API JSONPlaceholder)</h1>
+    <button id="cargarDatos">Cargar Usuarios</button>
+    <div id="datos-api">
+        <p>Presiona el botón para cargar los datos.</p>
+    </div>
 
-  <div class="formulario">
-    <label for="tipo">Selecciona qué consultar:</label>
-    <select id="tipo">
-      <option value="characters">Personajes</option>
-      <option value="episodes">Episodios</option>
-      <option value="locations">Lugares</option>
-    </select>
-    <button id="obtener">Obtener datos</button>
-  </div>
-
-  <div id="resultado"></div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
