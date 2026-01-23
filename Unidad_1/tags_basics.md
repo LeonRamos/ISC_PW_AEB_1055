@@ -79,3 +79,4 @@
 
 <button>...</button>: Botón.
 ```
+![Cheat Sheet Tags](./assets/html5_cheat_sheet_tags.png)
