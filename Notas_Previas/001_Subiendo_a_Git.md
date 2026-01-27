@@ -141,3 +141,5 @@ git push
 ***
 
 **¡Felicidades! Ahora ya sabes cómo subir y controlar versiones de tus proyectos en GitHub, una habilidad esencial en el área de TI.**
+
+Consulta el [Git Cheat Sheet](git-cheat-sheet-education.pdf)

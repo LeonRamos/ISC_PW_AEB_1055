@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Práctica 5: Página de noticia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f3f4f6;
+      color: #111827;
+      line-height: 1.7;
+    }
+
+    header {
+      background: #111827;
+      color: #f9fafb;
+      padding: 0.75rem 1rem;
+    }
+
+    .topbar {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+    }
+
+    nav a {
+      color: #e5e7eb;
+      text-decoration: none;
+      margin-left: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    nav a:hover {
+      color: #38bdf8;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 1.5rem auto 2.5rem;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: minmax(0, 2.5fr) minmax(0, 1fr);
+      gap: 2rem;
+    }
+
+    article h1 {
+      font-size: 2.2rem;
+      margin: 0 0 0.25rem;
+    }
+
+    .meta {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-bottom: 1.2rem;
+    }
+
+    article p {
+      margin: 0 0 1rem;
+      font-size: 1rem;
+    }
+
+    article p:first-of-type::first-letter {
+      font-size: 3rem;
+      float: left;
+      line-height: 1;
+      padding-right: 0.25rem;
+      padding-top: 0.15rem;
+      font-weight: 700;
+      color: #b91c1c;
+    }
+
+    article h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.35rem;
+    }
+
+    article a {
+      color: #b91c1c;
+      text-decoration: none;
+    }
+
+    article a:hover {
+      text-decoration: underline;
+    }
+
+    aside {
+      font-size: 0.9rem;
+    }
+
+    .aside-box {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 0.9rem 0.9rem 0.6rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .aside-box h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+    }
+
+    .aside-box ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .aside-box li {
+      margin-bottom: 0.3rem;
+    }
+
+    .aside-box a {
+      color: #111827;
+      text-decoration: none;
+    }
+
+    .aside-box a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      border-top: 1px solid #d1d5db;
+      padding: 1rem 1rem 1.5rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+      text-align: center;
+      background: #ffffff;
+    }
+
+    @media (max-width: 800px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        margin: 0 0.75rem 0.25rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="logo">Diario Web</div>
+      <nav>
+        <a href="#">Inicio</a>
+        <a href="#">Nacional</a>
+        <a href="#">Tecnología</a>
+        <a href="#">Deportes</a>
+        <a href="#">Cultura</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <h1>Título principal de la noticia</h1>
+      <div class="meta">
+        Por Redacción · 27 de enero de 2026 · Tecnología
+      </div>
+
+      <p>
+        Este es el primer párrafo de la noticia, pensado para resumir lo más
+        importante y captar la atención del lector desde el inicio.
+      </p>
+
+      <p>
+        En los siguientes párrafos se desarrolla el contexto, se añaden datos,
+        citas y enlaces relevantes para entender mejor la información presentada.
+      </p>
+
+      <p>
+        También se pueden incluir referencias a estudios, informes o artículos
+        anteriores publicados en el mismo medio digital.
+      </p>
+
+      <h2>Subtítulo o sección secundaria</h2>
+
+      <p>
+        Aquí se amplía un aspecto específico de la noticia, proporcionando
+        detalles técnicos, antecedentes o declaraciones de expertos.
+      </p>
+
+      <p>
+        Para más información, puedes consultar el informe completo en el sitio
+        oficial del proyecto haciendo clic en
+        <a href="#">este enlace de ejemplo</a>.
+      </p>
+    </article>
+
+    <aside>
+      <div class="aside-box">
+        <h3>Últimas noticias</h3>
+        <ul>
+          <li><a href="#">Nueva actualización en redes sociales populares</a></li>
+          <li><a href="#">Estudiantes desarrollan app para su comunidad</a></li>
+          <li><a href="#">Consejos para mejorar tu portafolio web</a></li>
+        </ul>
+      </div>
+
+      <div class="aside-box">
+        <h3>Publicidad / Aviso</h3>
+        <p>
+          Espacio reservado para anuncios del curso o recordatorios de tareas
+          y entregas en Classroom.
+        </p>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    © 2026 Diario Web · Actividad de práctica HTML5 + CSS (tipografía y maquetación).
+  </footer>
+</body>
+</html>

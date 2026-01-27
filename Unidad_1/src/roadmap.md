@@ -15,6 +15,7 @@
 - 📝 Formularios básicos (entrada de texto, botones, etiquetas).
 - 📌 Uso correcto de atributos (class, id, alt, title).
 - 🧩 Semántica y buenas prácticas (`<header>`, `<nav>`, `<footer>`, `<main>`).
+- [Cheat Sheet tags](./assets/html5_cheat_sheet_tags.png)
 - 🎨 Integrar hojas de estilo CSS.
 
 ---
@@ -30,6 +31,7 @@
 - 🎯 Pseudoclases y pseudoelementos (`:hover`, `::before`).
 - 📱 Diseño responsivo con media queries.
 - 🗂️ Organización y buenas prácticas.
+- [CSS Cheat Sheet](./assets/CSS_Cheat_Sheet.jpg)
 
 ---
 
@@ -45,6 +47,7 @@
 - 👨‍💻 Programación orientada a objetos.
 - ⏳ Asincronía: callbacks, promesas, async/await.
 - 🌐 Consumo de APIs externas.
+- [Cheat Sheet](./assets/JS_Cheat_Sheet.pdf)
 
 ---
 
