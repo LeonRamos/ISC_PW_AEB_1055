@@ -62,11 +62,11 @@
     }
 
     .gallery {
-      max-width: 1100px;
+      width: 100%;
       margin: 1.5rem auto 2.5rem;
-      padding: 0 1rem 1.5rem;
+      padding: 0 1.25rem 1.5rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.25rem;
     }
 
@@ -116,6 +116,16 @@
       background: #1d4ed8;
       color: #e5e7eb;
     }
+
+    @media (max-width: 480px) {
+  .gallery {
+    grid-template-columns: 1fr; /*  una sola card */
+  }
+
+  .thumb {
+    height: 280px; /* mejora visual en móvil */
+  }
+}
   </style>
 </head>
 <body>
