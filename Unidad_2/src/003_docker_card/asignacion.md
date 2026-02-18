@@ -35,13 +35,16 @@ Todos los pasos siguientes se hacen desde la terminal.
 
 Crear carpeta del proyecto y entrar en ella:
 
-bash
+```bash
 mkdir HolaDocker
 cd HolaDocker
+```
 Abrir Visual Studio Code en esta carpeta:
 
-bash
+```bash
 code .
+```
+
 3. Preparar el sitio estático
 Dentro de HolaDocker, crear una carpeta para el sitio:
 
@@ -51,19 +54,20 @@ Copiar o mover el archivo card.html de la sesión pasada a la carpeta sitio (pue
 
 Estructura esperada:
 
-text
+```text
 HolaDocker/
 ├── sitio/
 │   └── card.html
 └── Dockerfile
+```
 4. Crear el Dockerfile con Nginx
 En la raíz de HolaDocker, crear un archivo llamado Dockerfile (sin extensión).
 
 Escribir el siguiente contenido:
 
-text
+ ```text
 FROM nginx:latest
-
+```
 # Copia el contenido de la carpeta "sitio" al directorio por defecto de Nginx
 ```docker
 COPY sitio/ /usr/share/nginx/html/
