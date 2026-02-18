@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lorem Ipsum clone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #ffffff;
+      color: #000;
+      line-height: 1.5;
+    }
+
+    .top-banner {
+      height: 90px;
+      background: #ddd;
+      text-align: center;
+      line-height: 90px;
+      font-size: 0.9rem;
+    }
+
+    .lang-bar {
+      text-align: center;
+      font-size: 0.8rem;
+      margin: 0.5rem 0;
+    }
+
+    .lang-bar a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    .lang-bar a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1rem 2rem;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 3rem;
+      margin: 0.5rem 0;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    .columns {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .col {
+      flex: 1;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      margin-top: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .generator {
+      margin-top: 0.8rem;
+      display: grid;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      align-items: center;
+    }
+
+    .generator label {
+      display: block;
+    }
+
+    .generator input[type="number"] {
+      width: 60px;
+    }
+
+    .generator button {
+      margin-top: 0.4rem;
+      padding: 0.25rem 0.6rem;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    #result {
+      width: 100%;
+      margin-top: 0.5rem;
+      font: inherit;
+      padding: 0.4rem;
+    }
+
+    .content {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      padding: 1rem 0;
+      border-top: 1px solid #ccc;
+    }
+
+    @media (max-width: 800px) {
+      .columns {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="top-banner">Publicidad</header>
+
+  <nav class="lang-bar">
+    <a href="#">English</a> ·
+    <a href="#">Español</a> ·
+    <a href="#">Français</a>
+  </nav>
+
+  <main class="page">
+    <h1 class="title">Lorem Ipsum</h1>
+    <p class="subtitle"><em>“Neque porro quisquam est...”</em></p>
+
+    <section class="columns">
+      <article class="col">
+        <h2>What is Lorem Ipsum?</h2>
+        <p>
+          Lorem Ipsum is a dummy text commonly used in design and web
+          development to fill spaces while the final content is not ready.
+        </p>
+
+        <h2>Where does it come from?</h2>
+        <p>
+          It is based on fragments of classical Latin literature and has been
+          reused for many years as a neutral text block for mockups and layouts.
+        </p>
+      </article>
+
+      <article class="col">
+        <h2>Why do we use it?</h2>
+        <p>
+          Its letter distribution looks similar to real language, which helps
+          to judge typography, spacing and composition without distracting
+          the reader with meaningful content.
+        </p>
+
+        <h2>Where can I get some?</h2>
+        <form id="gen-form" class="generator">
+          <label>
+            Paragraphs:
+            <input type="number" id="para" min="1" max="10" value="5">
+          </label>
+
+          <label>
+            <input type="radio" name="type" value="paras" checked>
+            paragraphs
+          </label>
+
+          <label>
+            <input type="radio" name="type" value="words">
+            words (approx.)
+          </label>
+
+          <button type="submit">Generate Lorem Ipsum</button>
+        </form>
+
+        <textarea id="result" rows="8"
+          placeholder="Generated text will appear here..."></textarea>
+      </article>
+    </section>
+
+    <section class="content">
+      <h2>The standard Lorem Ipsum passage</h2>
+      <p>
+        Here you can place a longer sample of Lorem Ipsum text to imitate
+        the original site structure and provide additional content for tests
+        and layouts.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>help@example.com · Privacy Policy</p>
+  </footer>
+
+  <script>
+    const baseText = [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia."
+    ];
+
+    const form = document.getElementById("gen-form");
+    const paraInput = document.getElementById("para");
+    const result = document.getElementById("result");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      let n = Number(paraInput.value) || 1;
+      if (n < 1) n = 1;
+      if (n > 10) n = 10;
+
+      const type = form.elements["type"].value;
+
+      if (type === "paras") {
+        const paras = [];
+        for (let i = 0; i < n; i++) {
+          paras.push(baseText[i % baseText.length]);
+        }
+        result.value = paras.join("\\n\\n");
+      } else {
+        const words = baseText.join(" ").split(" ");
+        result.value = words.slice(0, n * 20).join(" ");
+      }
+    });
+  </script>
+</body>
+</html>

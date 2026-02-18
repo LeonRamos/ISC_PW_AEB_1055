@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Práctica 3: Filtro de galería</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+
+    header {
+      text-align: center;
+      padding: 1.75rem 1rem 1rem;
+    }
+
+    header h1 {
+      margin: 0 0 0.35rem;
+      font-size: 1.6rem;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+
+    .filters {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .filter-btn {
+      border: none;
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.85rem;
+      font-family: inherit;
+      cursor: pointer;
+      background: #020617;
+      color: #e5e7eb;
+      border: 1px solid #4b5563;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.05s ease;
+    }
+
+    .filter-btn.active {
+      background: #38bdf8;
+      color: #0f172a;
+      border-color: #38bdf8;
+    }
+
+    .filter-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .gallery {
+      width: 100%;
+      margin: 1.5rem auto 2.5rem;
+      padding: 0 1.25rem 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: #020617;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      transform: translateY(0);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    }
+
+    .card.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.97);
+    }
+
+    .thumb {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-body {
+      padding: 0.8rem 0.95rem 1rem;
+    }
+
+    .card-body h2 {
+      margin: 0 0 0.25rem;
+      font-size: 1rem;
+    }
+
+    .card-body p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: #cbd5f5;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      background: #1d4ed8;
+      color: #e5e7eb;
+    }
+
+    @media (max-width: 480px) {
+  .gallery {
+    grid-template-columns: 1fr; /*  una sola card */
+  }
+
+  .thumb {
+    height: 280px; /* mejora visual en móvil */
+  }
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Galería con filtro</h1>
+    <p>Usa los botones para mostrar solo los proyectos de una categoría.</p>
+
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <button class="filter-btn" data-filter="design">Diseño</button>
+      <button class="filter-btn" data-filter="apps">Apps</button>
+    </div>
+  </header>
+
+  <main class="gallery" id="gallery">
+    <article class="card" data-category="web">
+      <img class="thumb" src="https://via.placeholder.com/400x250?text=Web+1" alt="Proyecto web 1">
+      <div class="card-body">
+        <h2>Sitio para cafetería</h2>
+        <p>Landing page simple con menú y datos de contacto.</p>
+        <span class="tag">Web</span>
+      </div>
+    </article>
+
+    <article class="card" data-category="design">
+      <img class="thumb" src="https://via.placeholder.com/400x250?text=Design+1" alt="Proyecto diseño 1">
+      <div class="card-body">
+        <h2>Portada de revista</h2>
+        <p>Diseño visual centrado en tipografía y composición.</p>
+        <span class="tag">Diseño</span>
+      </div>
+    </article>
+
+    <article class="card" data-category="apps">
+      <img class="thumb" src="https://via.placeholder.com/400x250?text=App+1" alt="Proyecto app 1">
+      <div class="card-body">
+        <h2>App de tareas</h2>
+        <p>Interfaz móvil para gestionar pendientes diarios.</p>
+        <span class="tag">Apps</span>
+      </div>
+    </article>
+
+    <article class="card" data-category="web">
+      <img class="thumb" src="https://via.placeholder.com/400x250?text=Web+2" alt="Proyecto web 2">
+      <div class="card-body">
+        <h2>Portfolio personal</h2>
+        <p>Secciones de proyectos, sobre mí y contacto.</p>
+        <span class="tag">Web</span>
+      </div>
+    </article>
+
+    <article class="card" data-category="design">
+      <img class="thumb" src="https://via.placeholder.com/400x250?text=Design+2" alt="Proyecto diseño 2">
+      <div class="card-body">
+        <h2>Poster para evento</h2>
+        <p>Gráficos y jerarquía visual para conferencia.</p>
+        <span class="tag">Diseño</span>
+      </div>
+    </article>
+
+    <article class="card" data-category="apps">
+      <img class="thumb" src="https://via.placeholder.com/400x250?text=App+2" alt="Proyecto app 2">
+      <div class="card-body">
+        <h2>App de recetas</h2>
+        <p>Buscador de recetas con filtros por ingredientes.</p>
+        <span class="tag">Apps</span>
+      </div>
+    </article>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll(".filter-btn");
+    const cards = document.querySelectorAll(".card");
+
+    function setActiveButton(clicked) {
+      buttons.forEach(btn => btn.classList.remove("active"));
+      clicked.classList.add("active");
+    }
+
+    function filterGallery(category) {
+      cards.forEach(card => {
+        const cardCategory = card.dataset.category;
+        const show = category === "all" || cardCategory === category;
+        card.classList.toggle("hidden", !show);
+      });
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const category = btn.dataset.filter;
+        setActiveButton(btn);
+        filterGallery(category);
+      });
+    });
+  </script>
+</body>
+</html>
