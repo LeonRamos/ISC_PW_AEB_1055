@@ -64,6 +64,7 @@ El desarrollo de aplicaciones web es un pilar fundamental en la formación actua
 - Comprender la evolución y el impacto de las aplicaciones web.
 - Distinguir y aplicar distintas arquitecturas y tecnologías en el desarrollo web.
 - Planificar eficientemente el desarrollo de aplicaciones web.
+- Comprender los tag's basicos de [HTML](/Unidad_1/tags_basics.md).
 
 ## Objetivo de la unidad
 Al finalizar la unidad, el estudiante conocerá la historia, arquitectura, principales tecnologías y el proceso de planificación de aplicaciones web. Será capaz de identificar los elementos técnicos y organizativos esenciales para diseñar soluciones web alineadas con las necesidades actuales del entorno tecnológico y empresarial.
