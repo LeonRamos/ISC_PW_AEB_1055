@@ -1,0 +1,200 @@
+/* Reseteo de márgenes y fuente predeterminada para todo el sitio */
+body {
+    margin: 0; /* Elimina márgenes predeterminados */
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Fuente moderna y legible */
+    background: #f5f5f5; /* Color de fondo claro */
+    color: #212121; /* Texto principal en gris oscuro */
+}
+
+/* Barra superior de navegación */
+.barra-navegacion {
+    display: flex; /* Coloca los enlaces en línea */
+    justify-content: center; /* Centra los enlaces horizontalmente */
+    background: #161616; /* Fondo negro */
+    padding: 18px 0; /* Espaciado arriba y abajo */
+    gap: 30px; /* Separación entre enlaces */
+}
+
+.barra-navegacion a {
+    color: white; /* Letras blancas */
+    text-decoration: none; /* Sin subrayado */
+    font-weight: 400; /* Peso de fuente normal */
+    letter-spacing: 2px; /* Espaciado entre letras */
+    transition: color 0.2s; /* Suaviza el cambio de color */
+}
+
+.barra-navegacion a:hover {
+    color: #d4b684; /* Color marrón claro cuando pasa el mouse */
+}
+
+/* Sección principal con imagen y textos */
+.seccion-principal {
+    position: relative; /* Permite posicionar elementos hijos */
+    text-align: center; /* Centra el texto */
+}
+
+.contenedor-imagen {
+    position: relative; /* Permite el posicionamiento absoluto de los textos */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    max-height: 450px; /* Altura máxima de la imagen */
+    overflow: hidden; /* Oculta cualquier exceso de imagen */
+}
+
+.contenedor-imagen img {
+    width: 100%; /* Ocupa todo el ancho */
+    height: 450px; /* Altura fija */
+    object-fit: cover; /* Cubre todo el contenedor sin deformarse */
+    filter: brightness(80%); /* Oscurece la imagen */
+}
+
+.texto-superpuesto {
+    position: absolute; /* Permite ubicar exactamente los textos */
+    top: 0; left: 0; right: 0; bottom: 0; /* Cubre toda la imagen */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+}
+
+.texto-superpuesto h1 {
+    color: white; /* Letras blancas */
+    font-size: 3.2em; /* tamaño grande */
+    font-weight: 100; /* Fuente delgada */
+    margin: 0; /* Sin margen */
+    line-height: 1.1;
+}
+
+.direccion {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    background: rgba(32,32,32,0.7); /* Fondo semitransparente */
+    color: white;
+    padding: 6px 14px;
+    font-size: 1em;
+    border-radius: 7px;
+}
+
+.horario {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    background: black;
+    color: white;
+    padding: 6px 14px;
+    font-size: 0.98em;
+    border-radius: 7px;
+}
+
+/* Sección informativa */
+.acerca {
+    background: #faf8f6; /* Fondo blanco humo */
+    padding: 34px 8vw 26px 8vw;
+    text-align: center;
+}
+
+.boton-negro {
+    background: black;
+    color: white;
+    border: none;
+    padding: 8px 22px;
+    font-weight: bold;
+    font-size: 1.15em;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    margin-bottom: 14px;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.boton-negro:hover {
+    background: #333;
+}
+
+/* Formulario de reservación */
+.formulario {
+    background: white;
+    margin: 30px auto 0 auto;
+    max-width: 410px; /* Ancho máximo */
+    padding: 26px 36px 28px 36px;
+    border-radius: 9px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+}
+
+.formulario h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.formulario form {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.formulario label {
+    font-weight: bold;
+    font-size: 1.04em;
+}
+
+.formulario input, .formulario button {
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.formulario input:focus {
+    border-color: #d4b684;
+    outline: none;
+}
+
+.formulario button {
+    background: #161616;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 13px;
+    transition: background 0.17s;
+}
+
+.formulario button:hover {
+    background: #d4b684;
+    color: black;
+}
+
+/* Medias queries para responsividad */
+
+/* Cuando sea pantalla menor a 800px */
+@media (max-width: 800px) {
+    .contenedor-imagen img {
+        height: 300px; /* Imagen más pequeña */
+    }
+    .texto-superpuesto h1 {
+        font-size: 2.1em; /* Texto más pequeño */
+    }
+}
+
+/* Cuando sea pantalla menor a 500px */
+@media (max-width: 500px) {
+    .contenedor-imagen img {
+        height: 190px;
+    }
+    .texto-superpuesto h1 {
+        font-size: 1.2em;
+    }
+    .acerca, .formulario {
+        padding: 22px 8px;
+    }
+    .direccion, .horario {
+        font-size: 0.76em;
+        padding: 4px 7px;
+    }
+    .barra-navegacion {
+        gap: 13px;
+        padding: 12px 0;
+        font-size: 0.95em;
+    }
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Práctica 1: Contador de clics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .card {
+      background: #020617;
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+      max-width: 360px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.45);
+      border: 1px solid #1f2937;
+    }
+
+    h1 {
+      margin: 0 0 0.25rem;
+      font-size: 1.4rem;
+    }
+
+    p.subtitle {
+      margin: 0 0 1.25rem;
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+
+    .count {
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0 0 0.25rem;
+    }
+
+    .status {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      color: #9ca3af;
+    }
+
+    .btn {
+      font: inherit;
+      border-radius: 999px;
+      padding: 0.5rem 1.4rem;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 500;
+      background: #38bdf8;
+      color: #0f172a;
+      box-shadow: 0 8px 20px rgba(56,189,248,0.35);
+      transition: transform 0.05s ease, box-shadow 0.12s ease, background 0.15s ease;
+      margin-inline: 0.25rem;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid #4b5563;
+      box-shadow: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    .high {
+      color: #f97316;
+    }
+  </style>
+</head>
+<body>
+  <section class="card">
+    <h1>Contador de clics</h1>
+    <p class="subtitle">Haz clic en el botón y observa cómo cambia el contador.</p>
+
+    <p id="count" class="count">0</p>
+    <p id="status" class="status">Todavía es un número pequeño.</p>
+
+    <div>
+      <button id="btn-click" class="btn">Sumar clic</button>
+      <button id="btn-reset" class="btn btn-secondary">Reiniciar</button>
+    </div>
+  </section>
+
+  <script>
+    const countEl = document.getElementById("count");
+    const statusEl = document.getElementById("status");
+    const btnClick = document.getElementById("btn-click");
+    const btnReset = document.getElementById("btn-reset");
+
+    let count = 0;
+
+    function updateView() {
+      countEl.textContent = count;
+
+      if (count >= 20) {
+        statusEl.textContent = "¡Wow! Muchos clics ";
+        statusEl.classList.add("high");
+      } else if (count >= 10) {
+        statusEl.textContent = "Vas tomando ritmo, sigue clicando.";
+        statusEl.classList.add("high");
+      } else if (count > 0) {
+        statusEl.textContent = "Has empezado el contador.";
+        statusEl.classList.remove("high");
+      } else {
+        statusEl.textContent = "Todavía es un número pequeño.";
+        statusEl.classList.remove("high");
+      }
+    }
+
+    btnClick.addEventListener("click", () => {
+      count++;
+      updateView();
+    });
+
+    btnReset.addEventListener("click", () => {
+      count = 0;
+      updateView();
+    });
+  </script>
+</body>
+</html>
