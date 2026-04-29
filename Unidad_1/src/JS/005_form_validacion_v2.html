@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>JS Práctica 5 - Validador de formulario</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .card {
+      background: #020617;
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45);
+      border: 1px solid #1f2937;
+    }
+
+    h1 {
+      margin: 0 0 0.4rem;
+      font-size: 1.5rem;
+    }
+
+    p.subtitle {
+      margin: 0 0 1.1rem;
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+
+    form {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-size: 0.85rem;
+      margin-bottom: 0.25rem;
+    }
+
+    input,
+    textarea {
+      font: inherit;
+      padding: 0.45rem 0.6rem;
+      border-radius: 8px;
+      border: 1px solid #4b5563;
+      background: #020617;
+      color: #e5e7eb;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #6b7280;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 1px #38bdf8;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .error {
+      font-size: 0.78rem;
+      color: #fca5a5;
+      margin-top: 0.18rem;
+      display: none;
+    }
+
+    .field.invalid input,
+    .field.invalid textarea {
+      border-color: #f97373;
+      box-shadow: 0 0 0 1px #f97373;
+    }
+
+    .field.invalid .error {
+      display: block;
+    }
+
+    .hint {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      margin-top: 0.18rem;
+    }
+
+    .counter {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      margin-top: 0.18rem;
+      text-align: right;
+    }
+
+    .status {
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+      min-height: 1.1rem;
+    }
+
+    .status.ok {
+      color: #6ee7b7;
+    }
+
+    .status.fail {
+      color: #fca5a5;
+    }
+
+    button {
+      margin-top: 0.4rem;
+      justify-self: flex-end;
+      font: inherit;
+      border-radius: 999px;
+      padding: 0.45rem 1.15rem;
+      border: none;
+      cursor: pointer;
+      background: #38bdf8;
+      color: #0f172a;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 0 8px 20px rgba(56, 189, 248, 0.35);
+      transition: transform 0.05s ease, box-shadow 0.12s ease, background 0.15s ease;
+    }
+
+    button:hover:enabled {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+      background: #0ea5e9;
+    }
+
+    button:active:enabled {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+  <section class="card">
+    <h1>Contacto</h1>
+    <p class="subtitle">
+      Valida que el nombre, el correo y el mensaje sean correctos antes de enviar.
+    </p>
+
+    <form id="contact-form" novalidate>
+      <!-- Nombre -->
+      <div class="field" id="group-name">
+        <label for="name">Nombre completo *</label>
+        <input
+          id="name"
+          type="text"
+          placeholder="Escribe tu nombre"
+          maxlength="50"
+          aria-required="true"
+          aria-invalid="false"
+        />
+        <span class="hint">Entre 3 y 50 caracteres, solo letras y espacios.</span>
+        <span class="error" id="error-name">
+          Escribe un nombre válido (mínimo 3 caracteres, solo letras y espacios).
+        </span>
+      </div>
+
+      <!-- Correo -->
+      <div class="field" id="group-email">
+        <label for="email">Correo electrónico *</label>
+        <input
+          id="email"
+          type="email"
+          placeholder="nombre@ejemplo.com"
+          aria-required="true"
+          aria-invalid="false"
+        />
+        <span class="error" id="error-email">
+          Introduce un correo válido (formato nombre@dominio.com).
+        </span>
+      </div>
+
+      <!-- Mensaje -->
+      <div class="field" id="group-message">
+        <label for="message">Mensaje *</label>
+        <textarea
+          id="message"
+          placeholder="Escribe tu mensaje aquí..."
+          maxlength="300"
+          aria-required="true"
+          aria-invalid="false"
+        ></textarea>
+        <div class="counter" id="message-counter">0 / 300</div>
+        <span class="error" id="error-message">
+          El mensaje debe tener entre 10 y 300 caracteres.
+        </span>
+      </div>
+
+      <div
+        class="status"
+        id="form-status"
+        aria-live="polite"
+        aria-atomic="true"
+      ></div>
+
+      <button type="submit" id="submit-btn" disabled>
+        Enviar mensaje
+      </button>
+    </form>
+  </section>
+
+  <script>
+    const form = document.getElementById("contact-form");
+    const statusEl = document.getElementById("form-status");
+    const submitBtn = document.getElementById("submit-btn");
+    const counterEl = document.getElementById("message-counter");
+
+    const fields = {
+      name: document.getElementById("name"),
+      email: document.getElementById("email"),
+      message: document.getElementById("message"),
+    };
+
+    function setFieldValid(id, valid) {
+      const group = document.getElementById("group-" + id);
+      const input = fields[id];
+
+      if (valid) {
+        group.classList.remove("invalid");
+        input.setAttribute("aria-invalid", "false");
+      } else {
+        group.classList.add("invalid");
+        input.setAttribute("aria-invalid", "true");
+      }
+    }
+
+    function validateName() {
+      const value = fields.name.value.trim();
+      const pattern = /^[A-Za-zÁÉÍÓÚÑáéíóúñ ]+$/;
+      const ok =
+        value.length >= 3 && value.length <= 50 && pattern.test(value);
+      setFieldValid("name", ok);
+      return ok;
+    }
+
+    function validateEmail() {
+      const value = fields.email.value.trim();
+      // Regex sencilla para propósito educativo
+      const pattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+      const ok = pattern.test(value);
+      setFieldValid("email", ok);
+      return ok;
+    }
+
+    function validateMessage() {
+      const value = fields.message.value.trim();
+      const ok = value.length >= 10 && value.length <= 300;
+      setFieldValid("message", ok);
+      return ok;
+    }
+
+    function updateCounter() {
+      const length = fields.message.value.length;
+      counterEl.textContent = length + " / 300";
+    }
+
+    function updateSubmitState() {
+      const okName = validateName();
+      const okEmail = validateEmail();
+      const okMessage = validateMessage();
+      submitBtn.disabled = !(okName && okEmail && okMessage);
+    }
+
+    // Eventos de validación en blur
+    fields.name.addEventListener("blur", validateName);
+    fields.email.addEventListener("blur", validateEmail);
+    fields.message.addEventListener("blur", validateMessage);
+
+    // Validación y habilitado de botón en tiempo real
+    fields.name.addEventListener("input", updateSubmitState);
+    fields.email.addEventListener("input", updateSubmitState);
+    fields.message.addEventListener("input", () => {
+      updateCounter();
+      updateSubmitState();
+    });
+
+    // Inicializar contador
+    updateCounter();
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const okName = validateName();
+      const okEmail = validateEmail();
+      const okMessage = validateMessage();
+
+      if (okName && okEmail && okMessage) {
+        submitBtn.disabled = true;
+        statusEl.textContent = "Enviando mensaje...";
+        statusEl.className = "status";
+
+        // Simulación de envío al servidor
+        setTimeout(() => {
+          const nombre = fields.name.value.trim();
+          statusEl.textContent =
+            "Gracias, " +
+            nombre +
+            ", tu mensaje ha sido enviado (simulado).";
+          statusEl.className = "status ok";
+
+          // Mostrar en consola el "payload" simulado
+          console.log("Datos enviados:", {
+            nombre: fields.name.value.trim(),
+            email: fields.email.value.trim(),
+            mensaje: fields.message.value.trim(),
+          });
+
+          form.reset();
+          updateCounter();
+          submitBtn.disabled = true;
+        }, 1200);
+      } else {
+        statusEl.textContent = "Revisa los campos marcados en rojo.";
+        statusEl.className = "status fail";
+      }
+    });
+  </script>
+</body>
+</html>
